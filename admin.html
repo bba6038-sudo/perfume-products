@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<body>
+   <form id="perfumeForm" class="max-w-md mx-auto p-6 bg-white rounded-xl shadow-md space-y-4">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">Add New Perfume</h2>
+
+  <!-- Perfume Name -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">Perfume Name</label>
+    <input type="text" id="pName" placeholder="e.g. Dior Sauvage" required
+      class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+  </div>
+
+  <!-- Price -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">Price ($)</label>
+    <input type="number" id="pPrice" placeholder="e.g. 120" required
+      class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+  </div>
+
+  <!-- Category -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+    <input type="text" id="pCategory" placeholder="e.g. Woody / Floral" required
+      class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+  </div>
+
+  <!-- Image URL -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
+    <input type="url" id="pImage" placeholder="https://example.com/image.jpg" required
+      class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" 
+    class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition font-medium">
+    Save Perfume
+  </button>
+</form>
+    <script src="admin.js"></script>
+</body>
+</html>

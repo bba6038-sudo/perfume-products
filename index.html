@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<!-- في أعلى ملف index.html -->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Webtixa Parfum — Scent the Moment</title>
+<meta name="description" content="Webtixa Parfum — fine fragrances crafted with rare ingredients and a devotion to timeless elegance." />
+<meta name="theme-color" content="#faf8f5" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: "#faf8f5",
+          sand: "#f6f3ee",
+          shell: "#fffdf9",
+          gold: "#cba374",
+          golddark: "#b58e61",
+          taupe: "#a39281",
+          ink: "#1c1a19",
+          line: "#eae5df",
+        },
+        fontFamily: {
+          sans: ["Montserrat", "sans-serif"],
+          serif: ["Cormorant Garamond", "serif"],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { font-family: "Montserrat", sans-serif; }
+  .font-serif { font-family: "Cormorant Garamond", serif; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fade-up { animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .delay-1 { animation-delay: 0.12s; }
+  .delay-2 { animation-delay: 0.24s; }
+  .delay-3 { animation-delay: 0.36s; }
+  .delay-4 { animation-delay: 0.48s; }
+</style>
+</head>
+<body class="bg-cream text-ink antialiased selection:bg-gold/30">
+
+<!-- Announcement bar -->
+<div class="w-full bg-gold text-white text-[10px] md:text-[11px] py-2.5 text-center tracking-[0.2em] font-light uppercase px-4">
+  Complimentary delivery on all orders &nbsp;|&nbsp; Exquisitely crafted essences, naturally inspired
+</div>
+
+<header class="w-full bg-cream/90 border-b border-line sticky top-0 z-50 backdrop-blur-md relative">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="#" class="flex flex-col leading-none">
+      <span class="font-serif text-3xl tracking-widest text-ink font-semibold lowercase">webtixa</span>
+      <span class="text-[8px] tracking-[0.4em] text-taupe uppercase mt-1 ml-6">Parfum</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-9 text-[11px] font-semibold tracking-[0.14em] text-ink uppercase">
+      <a href="#families" data-i18n="navShop" class="hover:text-gold transition-colors">Shop</a>
+      <a href="#bestsellers" data-i18n="navCollections" class="hover:text-gold transition-colors">Collections</a>
+      <a href="#about" data-i18n="navAbout" class="hover:text-gold transition-colors">About</a>
+      <a href="#journal" data-i18n="navJournal" class="hover:text-gold transition-colors">Journal</a>
+      <a href="#discover" data-i18n="navDiscover" class="hover:text-gold transition-colors">Discover</a>
+    </nav>
+
+    <div class="flex items-center gap-4 md:gap-5">
+      <div id="google_translate_element" class="!hidden select-none pointer-events-none"></div>
+
+      <button id="btn-translate-ar" type="button" class="langToggleBtn hidden sm:inline-flex items-center gap-1 border border-stone-300 hover:border-[#cba374] px-3 py-1.5 rounded text-[10px] tracking-[0.1em] font-semibold uppercase transition-colors text-stone-800 cursor-pointer">
+        🌐 <span id="lang-text">العربية</span>
+      </button>
+
+      <button aria-label="Search" class="text-ink hover:text-gold transition-colors p-1">
+        <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      
+      <button aria-label="Account" class="hidden sm:block text-ink hover:text-gold transition-colors p-1">
+        <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      </button>
+      
+      <button aria-label="Cart" class="relative text-ink hover:text-gold transition-colors p-1">
+        <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span class="absolute -top-1 -right-1 bg-gold text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+      </button>
+
+      <a href="#bestsellers" class="hidden sm:inline-flex bg-ink text-white text-[10px] tracking-[0.2em] px-6 py-2.5 uppercase font-medium hover:bg-gold transition-all rounded-sm shadow-sm">Shop Now</a>
+      
+      <!-- Fixed Mobile Menu Button Syntax -->
+      <button id="menu-toggle" aria-label="Menu" class="lg:hidden text-ink p-1">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="hidden lg:hidden absolute top-full left-0 w-full border-b border-line bg-cream/95 backdrop-blur-md px-6 py-6 shadow-xl transition-all duration-300">
+    <nav class="flex flex-col gap-4 text-[12px] font-semibold tracking-[0.14em] text-ink uppercase">
+      <a href="#families" data-i18n="navShop" class="hover:text-gold transition-colors">Shop</a>
+      <a href="#bestsellers" data-i18n="navCollections" class="hover:text-gold transition-colors">Collections</a>
+      <a href="#about" data-i18n="navAbout" class="hover:text-gold transition-colors">About</a>
+      <a href="#journal" data-i18n="navJournal" class="hover:text-gold transition-colors">Journal</a>
+      <a href="#discover" data-i18n="navDiscover" class="hover:text-gold transition-colors">Discover</a>
+      
+      <div class="pt-3 border-t border-line">
+        <button id="btn-translate-ar-mobile" type="button" class="langToggleBtn w-full bg-gold text-white text-[10px] tracking-[0.2em] px-4 py-2.5 uppercase font-medium rounded-sm hover:bg-ink transition-colors">
+          🌐 <span class="lang-text-mobile">العربية</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="w-full min-h-screen">
+<section class="relative w-full bg-[#FAF8F5] overflow-hidden">
+  
+  <div class="hidden md:flex relative w-full min-h-[600px] items-center bg-cover bg-center bg-no-repeat rtl:bg-left"
+       style="background-image: url('hero-bg.jpg');">
+    <div class="max-w-7xl mx-auto px-8 lg:px-12 w-full py-20 z-10 flex rtl:justify-end">
+      
+      
+      <div class="max-w-xl space-y-6 rtl:text-right">
+        <span class="text-[11px] tracking-[0.3em] text-[#cba374] font-semibold uppercase block" data-i18n="sub_title">
+          EXTRAORDINARY BY NATURE
+        </span>
+        <h1 class="font-serif text-6xl lg:text-7xl text-stone-900 leading-[1.05] font-normal tracking-tight" data-i18n="main_title">
+          Scent <br/>
+          <span class="italic font-light">the Moment</span>
+        </h1>
+        <p class="text-stone-800 text-sm leading-relaxed font-medium max-w-sm tracking-wide" data-i18n="desc">
+          Fine fragrances crafted with rare ingredients and a devotion to timeless elegance.
+        </p>
+        <div class="flex items-center gap-4 pt-4">
+          <a href="#" class="bg-[#cba374] text-white text-[11px] tracking-[0.2em] px-8 py-4 uppercase font-medium hover:bg-[#b58e61] transition-all shadow-sm" data-i18n="btn_explore">
+            EXPLORE COLLECTION
+          </a>
+          <a href="#" class="border border-stone-400 text-stone-800 text-[11px] tracking-[0.2em] px-8 py-4 uppercase font-medium hover:border-stone-800 hover:bg-white/40 transition-all" data-i18n="btn_find">
+            FIND YOUR SCENT
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <div class="flex md:hidden flex-col items-center text-center pt-8 pb-6 px-6">
+    
+    
+    <div class="space-y-4 max-w-xs mx-auto mb-6">
+      <span class="text-[10px] tracking-[0.25em] text-[#cba374] font-semibold uppercase block" data-i18n="sub_title">
+        EXTRAORDINARY BY NATURE
+      </span>
+      <h1 class="font-serif text-4xl text-stone-900 leading-[1.1] font-normal tracking-tight" data-i18n="main_title">
+        Scent <br/>
+        <span class="italic font-light">the Moment</span>
+      </h1>
+      <p class="text-stone-700 text-xs leading-relaxed font-medium tracking-wide" data-i18n="desc">
+        Fine fragrances crafted with rare ingredients and a devotion to timeless elegance.
+      </p>
+
+      <div class="flex flex-col gap-2.5 pt-2 w-full">
+        <a href="#" class="bg-[#cba374] text-white text-[10px] tracking-[0.2em] px-6 py-3.5 uppercase font-medium shadow-sm w-full" data-i18n="btn_explore">
+          EXPLORE COLLECTION
+        </a>
+        <a href="#" class="border border-stone-400 text-stone-800 text-[10px] tracking-[0.2em] px-6 py-3.5 uppercase font-medium w-full bg-white/50" data-i18n="btn_find">
+          FIND YOUR SCENT
+        </a>
+      </div>
+    </div>
+
+    
+    <div class="w-full relative rounded-lg overflow-hidden shadow-sm">
+      <img src="hero-bg.jpg" alt="Aurelle Perfume" class="w-full h-auto object-cover rounded-lg" />
+    </div>
+
+  </div>
+
+</section>
+ <section class="max-w-[1280px] mx-auto bg-[#FAFAF8] border border-[#EBE7E1] rounded-sm py-6 px-4 md:px-8 shadow-sm">
+        
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-[#EBE7E1]">
+
+            <div class="flex items-center space-x-3.5 px-4 py-3 lg:first:pl-0">
+                
+                <div class="shrink-0 text-[#A67B5B]">
+                    
+                    
+<svg 
+  xmlns="http://www.w3.org/2000/svg" 
+  width="24" 
+  height="24" 
+  viewBox="0 0 24 24" 
+  fill="none" 
+  stroke="#A67B5B" 
+  stroke-width="1.5" 
+  stroke-linecap="round" 
+  stroke-linejoin="round"
+  style="display: inline-block; vertical-align: middle;"
+>
+  <title>كاملة - سيارة توصيل</title>
+  
+  <path d="M5 18H3c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v9c0 1.1-.9 2-2 2H5"></path>
+  <path d="M10 18H5"></path>
+  <path d="M18 18h2c1.1 0 2-.9 2-2v-3l-2.7-3.6C19 9.1 18.6 9 18.2 9H15"></path>
+  <circle cx="7.5" cy="18.5" r="2.5"></circle>
+  <circle cx="17.5" cy="18.5" r="2.5"></circle>
+</svg>
+     
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.129-1.125V11.16a2.25 2.25 0 0 0-.659-1.59l-2.435-2.435a2.25 2.25 0 0 0-1.59-.659h-4.635c-.621 0-1.125.504-1.125 1.125v-1.5M14.25 18.75h-.375v-1.5h.375M12 6.75h3.75a1.125 1.125 0 0 1 1.125 1.125v2.25H12V6.75Z" />
+                    </svg>
+                </div>
+                <div class="flex flex-col justify-center min-h-[42px]">
+                    <h4 class="text-[13px] font-medium text-[#1C1C1C] leading-tight tracking-wide whitespace-nowrap">Complimentary Delivery</h4>
+                    <p class="text-[11px] text-[#767676] mt-0.5 leading-tight whitespace-nowrap">On all US orders</p>
+                </div>
+            </div>
+
+           
+            <div class="flex items-center space-x-3.5 px-4 py-3">
+                <div class="shrink-0 text-[#A67B5B]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    </svg>
+                </div>
+                <div class="flex flex-col justify-center min-h-[42px]">
+                    <h4 class="text-[13px] font-medium text-[#1C1C1C] leading-tight tracking-wide whitespace-nowrap">Samples with Every Order</h4>
+                    <p class="text-[11px] text-[#767676] mt-0.5 leading-tight whitespace-nowrap">Try something new</p>
+                </div>
+            </div>
+
+           
+            <div class="flex items-center space-x-3.5 px-4 py-3">
+                <div class="shrink-0 text-[#A67B5B]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H4.5a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-9.75-13.5h19.5a1.5 1.5 0 0 1 1.5 1.5v2.25a1.5 1.5 0 0 1-1.5 1.5H2.25a1.5 1.5 0 0 1-1.5-1.5V9a1.5 1.5 0 0 1 1.5-1.5Z" />
+                    </svg>
+                </div>
+                <div class="flex flex-col justify-center min-h-[42px]">
+                    <h4 class="text-[13px] font-medium text-[#1C1C1C] leading-tight tracking-wide whitespace-nowrap">Gift Wrapping</h4>
+                    <p class="text-[11px] text-[#767676] mt-0.5 leading-tight whitespace-nowrap">Elegantly packaged</p>
+                </div>
+            </div>
+
+          
+            <div class="flex items-center space-x-3.5 px-4 py-3 lg:last:pr-0">
+                <div class="shrink-0 text-[#A67B5B]">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385c.116.486-.425.878-.852.623l-4.697-2.807a.563.563 0 0 0-.58 0l-4.697 2.807c-.427.255-.968-.137-.852-.623l1.285-5.385a.563.563 0 0 0-.182-.557l-4.204-3.602c-.38-.325-.178-.948.32-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                    </svg>
+                </div>
+                <div class="flex flex-col justify-center min-h-[42px]">
+                    <h4 class="text-[13px] font-medium text-[#1C1C1C] leading-tight tracking-wide whitespace-nowrap">Exclusive Rewards</h4>
+                    <p class="text-[11px] text-[#767676] mt-0.5 leading-tight whitespace-nowrap">For our members</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+   
+<section id="fragrance-families-system" class="w-full bg-[#faf8f5] py-14 md:py-20 border-b border-stone-200/60" dir="ltr">
+<div class="max-w-7xl mx-auto px-6">
+
+
+<div class="text-center space-y-2 mb-12">
+<h2 class="font-serif text-2xl md:text-3xl text-stone-900 font-normal tracking-tight">
+Fragrance Families
+</h2>
+<p class="text-[10px] md:text-[12px] tracking-[0.1em] text-stone-600 uppercase font-medium">
+EXPLORE SCENTS THAT SPEAK TO YOU
+</p>
+</div>
+
+
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+
+
+<a href="#" class="group flex flex-col items-center text-center">
+<div class="w-full aspect-[4/5] rounded-t-full overflow-hidden mb-4 bg-[#f2ede6] shadow-sm transition-transform duration-300 group-hover:-translate-y-1">
+<img src="floral.jpg" alt="Floral" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+</div>
+<h3 class="text-xs font-semibold text-stone-900 uppercase tracking-widest mb-1 group-hover:text-[#cba374] transition-colors">FLORAL</h3>
+<p class="text-[10px] text-stone-500 font-light">Soft & Romantic</p>
+</a>
+
+
+<a href="#" class="group flex flex-col items-center text-center">
+<div class="w-full aspect-[4/5] rounded-t-full overflow-hidden mb-4 bg-[#f2ede6] shadow-sm transition-transform duration-300 group-hover:-translate-y-1">
+<img src="woody.jpg" alt="Woody" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+</div>
+<h3 class="text-xs font-semibold text-stone-900 uppercase tracking-widest mb-1 group-hover:text-[#cba374] transition-colors">WOODY</h3>
+<p class="text-[10px] text-stone-500 font-light">Warm & Grounded</p>
+</a>
+<a href="#" class="group flex flex-col items-center text-center">
+<div class="w-full aspect-[4/5] rounded-t-full overflow-hidden mb-4 bg-[#f2ede6] shadow-sm transition-transform duration-300 group-hover:-translate-y-1">
+<img src="citrus.jpg" alt="Citrus" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+</div>
+<h3 class="text-xs font-semibold text-stone-900 uppercase tracking-widest mb-1 group-hover:text-[#cba374] transition-colors">CITRUS</h3>
+<p class="text-[10px] text-stone-500 font-light">Bright & Uplifting</p>
+</a>
+
+<a href="#" class="group flex flex-col items-center text-center">
+<div class="w-full aspect-[4/5] rounded-t-full overflow-hidden mb-4 bg-[#f2ede6] shadow-sm transition-transform duration-300 group-hover:-translate-y-1">
+<img src="amber.jpg" alt="Amber" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+</div>
+<h3 class="text-xs font-semibold text-stone-900 uppercase tracking-widest mb-1 group-hover:text-[#cba374] transition-colors">AMBER</h3>
+<p class="text-[10px] text-stone-500 font-light">Rich & Sensual</p>
+</a>
+<a href="#" class="group flex flex-col items-center text-center">
+<div class="w-full aspect-[4/5] rounded-t-full overflow-hidden mb-4 bg-[#f2ede6] shadow-sm transition-transform duration-300 group-hover:-translate-y-1">
+<img src="fresh.jpg" alt="Fresh" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+
+
+</div>
+<h3 class="text-xs font-semibold text-stone-900 uppercase tracking-widest mb-1 group-hover:text-[#cba374] transition-colors">FRESH</h3>
+<p class="text-[10px] text-stone-500 font-light">Clean & Invigorating</p>
+</a>
+
+<a href="#" class="group flex flex-col items-center text-center">
+<div class="w-full aspect-[4/5] rounded-t-full overflow-hidden mb-4 bg-[#f2ede6] shadow-sm transition-transform duration-300 group-hover:-translate-y-1">
+<img src="oud.jpg" alt="Oud" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+</div>
+<h3 class="text-xs font-semibold text-stone-900 uppercase tracking-widest mb-1 group-hover:text-[#cba374] transition-colors">OUD</h3>
+<p class="text-[10px] text-stone-500 font-light">Deep & Mysterious</p>
+</a>
+
+</div>
+
+</div>
+</section>
+<section id="bestsellers" class="py-16 md:py-20 bg-sand border-b border-line">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <div class="lg:col-span-3 flex flex-col gap-6">
+        <h2 class="text-4xl font-serif text-ink leading-tight">Our<br />Bestsellers</h2>
+        <p class="text-sm text-ink/70 leading-relaxed">Iconic scents, loved by our community worldwide.</p>
+        <a href="#" class="inline-flex items-center text-xs font-semibold text-ink tracking-wider hover:text-gold transition-colors group">
+          View All Collections <span class="ml-1.5 transition-transform group-hover:translate-x-1">&rarr;</span>
+        </a>
+      </div>
+
+      <div id ="perfumesContainer" class="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <div class="product-card relative flex flex-col bg-shell border border-line rounded-lg p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          
+          <div class="add-button relative w-full aspect-square rounded-md overflow-hidden mb-4 flex items-center justify-center bg-white/50 p-4">
+            
+            <span class="absolute top-2 left-2 z-10 bg-ink/90 backdrop-blur-sm text-white text-[8px] font-medium tracking-[0.2em] uppercase px-2.5 py-0.5 rounded-full shadow-sm pointer-events-none">
+              Bestseller
+            </span>
+
+            <img src="bestseller1.png" alt="Lumière Rose perfume" class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105" />
+            
+            <button data-id="1"   class="quickAddButton absolute inset-x-3 bottom-3 opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 bg-ink text-white text-[10px] tracking-[0.2em] font-medium uppercase py-2.5 rounded-sm hover:bg-gold active:scale-95 shadow-md z-20">
+              Quick Add
+            </button>
+          </div>
+
+          <h3 class="text-xs font-bold text-ink tracking-wide mb-0.5">Lumière Rose</h3>
+          <p class="text-[11px] text-taupe mb-1.5">Eau de Parfum</p>
+          <div class="flex items-center gap-1 text-[10px] text-gold mb-2">
+            <span>★★★★★</span>
+            <span class="text-taupe ml-1">(230)</span>
+          </div>
+          
+
+          <div class="flex items-center justify-between mt-auto pt-1">
+            <span class="text-sm font-bold text-ink">$120.00</span>
+            <button  Lumière Rose to cart" class="giftButton w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink hover:bg-gold hover:border-gold hover:text-white active:scale-90 transition-all duration-200">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z" /></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="product-card relative flex flex-col bg-shell border border-line rounded-lg p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="relative w-full aspect-square rounded-md overflow-hidden mb-4 flex items-center justify-center bg-white/50 p-4">
+            
+            <span class="add-button absolute top-2 left-2 z-10 bg-gold/90 backdrop-blur-sm text-white text-[8px] font-medium tracking-[0.2em] uppercase px-2 py-0.5 rounded-full shadow-sm pointer-events-none">
+              New Arrival
+            </span>
+
+            <img src="bestseller2.png" alt="Velvet Oud perfume" class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105" />
+            
+            <button data-id="2"  class="quickAddButton absolute inset-x-3 bottom-3 opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 bg-ink text-white text-[10px] tracking-[0.2em] font-medium uppercase py-2.5 rounded-sm hover:bg-gold active:scale-95 shadow-md z-20">
+              Quick Add
+            </button>
+          </div>
+
+          <h3 class="text-xs font-bold text-ink tracking-wide mb-0.5">Velvet Oud</h3>
+          <p class="text-[11px] text-taupe mb-1.5">Eau de Parfum</p>
+          <div class="flex items-center gap-1 text-[10px] text-gold mb-2">
+            <span>★★★★★</span>
+            <span class="text-taupe ml-1">(310)</span>
+          </div>
+          
+          <div class="flex items-center justify-between mt-auto pt-1">
+            <span class="text-sm font-bold text-ink">$149.00</span>
+            <button  class="giftButton w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink hover:bg-gold hover:border-gold hover:text-white active:scale-90 transition-all duration-200">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z" /></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="product-card relative flex flex-col bg-shell border border-line rounded-lg p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="add-button relative w-full aspect-square rounded-md overflow-hidden mb-4 flex items-center justify-center bg-white/50 p-4">
+            
+            <span class="absolute top-2 left-2 z-10 bg-gold/90 backdrop-blur-sm text-white text-[8px] font-medium tracking-[0.2em] uppercase px-2 py-0.5 rounded-full shadow-sm pointer-events-none">
+              Best Seller
+            </span>            
+            <img src="bestseller3.png" alt="Citrus Verde perfume" class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105" />
+            
+            <button data-id="3"  class="quickAddButton absolute inset-x-3 bottom-3 opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 bg-ink text-white text-[10px] tracking-[0.2em] font-medium uppercase py-2.5 rounded-sm hover:bg-gold active:scale-95 shadow-md z-20">
+              Quick Add
+            </button>
+          </div>
+
+          <h3 class="text-xs font-bold text-ink tracking-wide mb-0.5">Citrus Verde</h3>
+          <p class="text-[11px] text-taupe mb-1.5">Eau de Toilette</p>
+          <div class="flex items-center gap-1 text-[10px] text-gold mb-2">
+            <span>★★★★★</span>
+            <span class="text-taupe ml-1">(185)</span>
+          </div>
+          
+          <div class="flex items-center justify-between mt-auto pt-1">
+            <span class="text-sm font-bold text-ink">$109.00</span>
+            <button  class="giftButton w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink hover:bg-gold hover:border-gold hover:text-white active:scale-90 transition-all duration-200">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z" /></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="product-card relative flex flex-col bg-shell border border-line rounded-lg p-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="add-button relative w-full aspect-square rounded-md overflow-hidden mb-4 flex items-center justify-center bg-white/50 p-4">
+            
+            <span class="absolute top-2 left-2 z-10 bg-gold/90 backdrop-blur-sm text-white text-[8px] font-medium tracking-[0.2em] uppercase px-2 py-0.5 rounded-full shadow-sm pointer-events-none">
+              Exclusive
+            </span>
+
+            <img src="bestseller4.png" alt="Ambre Doré perfume" class="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105" />
+            
+            <button data-id="4"
+          
+             class="quickAddButton absolute inset-x-3 bottom-3 opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 bg-ink text-white text-[10px] tracking-[0.2em] font-medium uppercase py-2.5 rounded-sm hover:bg-gold active:scale-95 shadow-md z-20">
+              Quick Add
+            </button>
+          </div>
+
+          <h3 class="text-xs font-bold text-ink tracking-wide mb-0.5">Ambre Doré</h3>
+          <p class="text-[11px] text-taupe mb-1.5">Extrait de Parfum</p>
+          <div class="flex items-center gap-1 text-[10px] text-gold mb-2">
+            <span>★★★★★</span>
+            <span class="text-taupe ml-1">(294)</span>
+          </div>
+          
+          <div class="flex items-center justify-between mt-auto pt-1">
+            <span class="text-sm font-bold text-ink">$158.00</span>
+            <button class="giftButton w-8 h-8 rounded-full border border-line flex items-center justify-center text-ink hover:bg-gold hover:border-gold hover:text-white active:scale-90 transition-all duration-200">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z" /></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<section id="discover" class="w-full max-w-7xl mx-auto my-12 px-6">
+  <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-sand via-cream to-[#eae0d4] border border-line shadow-sm p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+    <div class="flex flex-col sm:flex-row items-center gap-6 w-full md:w-auto text-center sm:text-left">
+      <div class="shrink-0 w-32 h-32 rounded-xl overflow-hidden ring-1 ring-line">
+        <img src="discovery-set.png" alt="Discovery set of sample fragrances" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+      </div>
+      <div class="space-y-2 max-w-md">
+        <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-gold">Exclusive Offer</span>
+        <h3 class="text-2xl md:text-3xl font-serif text-ink leading-tight">Discover More Scents</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">Enjoy an exclusive discovery set with a curated selection of our finest signature fragrances.</p>
+      </div>
+    </div>
+    <a href="#" class="inline-flex items-center justify-center w-full md:w-auto px-8 py-3.5 text-[11px] font-medium uppercase tracking-widest text-white bg-ink rounded-lg hover:bg-gold transition-all duration-300 shadow-sm shrink-0">Explore Set</a>
+  </div>
+</section>
+<section id="about" class="w-full max-w-7xl mx-auto px-4 sm:px-6 my-12 lg:my-20">
+  
+  <div class="bg-white bg-opacity-80 backdrop-blur-sm border border-line/70 rounded-2xl lg:rounded-2xl p-4 sm:p-6 lg:p-1 lg:px-4  shadow-sm">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      
+      <div class="lg:col-span-6 flex flex-col gap-6 order-2 lg:order-1">
+        
+
+        <div class="space-y-2">
+          <span class="text-[11px] font-semibold tracking-[0.25em] uppercase text-gold block">
+            Our Story
+          </span>
+          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl tracking-tight text-ink leading-[1.2]">
+            Crafted with Intention,<br />Rooted in Elegance
+          </h2>
+        </div>
+
+      
+        <p class="text-xs sm:text-sm text-ink/75 leading-relaxed max-w-lg">
+          Each Webtixa fragrance is a composition of floral and botanical essences, sourced responsibly from around the world and blended with devotion. Every note brings a unique sensory journey designed to elevate the everyday.
+        </p>
+
+   
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-6 border-t border-line/60 mt-2">
+          
+          
+          <div class="flex flex-col items-center text-center gap-2 group">
+            <div class="w-10 h-10 rounded-full bg-sand/80 flex items-center justify-center text-gold mb-1 transition-colors group-hover:bg-gold group-hover:text-white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22C12 22 20 18 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 18 12 22 12 22Z"/>
+                <path d="M12 8V16"/>
+                <path d="M9 11L12 8L15 11"/>
+              </svg>
+            </div>
+            <h3 class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-ink">Pure Ingredients</h3>
+            <p class="text-[10px] text-taupe hidden sm:block">Responsibly sourced</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center gap-2 group">
+            <div class="w-10 h-10 rounded-full bg-sand/80 flex items-center justify-center text-gold mb-1 transition-colors group-hover:bg-gold group-hover:text-white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 3H15"/>
+                <path d="M10 3V8.2L4.5 17.5C3.8 18.7 4.7 20.2 6.1 20.2H17.9C19.3 20.2 20.2 18.7 19.5 17.5L14 8.2V3"/>
+                <path d="M7 15H17"/>
+              </svg>
+            </div>
+            <h3 class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-ink">Artisan Crafted</h3>
+            <p class="text-[10px] text-taupe hidden sm:block">Masterful blends</p>
+          </div>
+
+          <div class="flex flex-col items-center text-center gap-2 group">
+            <div class="w-10 h-10 rounded-full bg-sand/80 flex items-center justify-center text-gold mb-1 transition-colors group-hover:bg-gold group-hover:text-white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 18H20"/>
+                <path d="M5 14L3 8L8.5 11L12 5L15.5 11L21 8L19 14H5Z"/>
+              </svg>
+            </div>
+            <h3 class="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-ink">Timeless Elegance</h3>
+            <p class="text-[10px] text-taupe hidden sm:block">Rooted in heritage</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="lg:col-span-6 order-1 lg:order-2">
+        <div class="relative w-full h-[280px] sm:h-[380px] lg:h-[500px] rounded-xl lg:rounded-2xl overflow-hidden ring-1 ring-line/50 group shadow-sm">
+          <img 
+            src="bottle.jpg" 
+            alt="Webtixa perfume bottle with botanicals" 
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+<section class="w-full bg-sand py-14 px-6 border-y border-line">
+  <div class="max-w-7xl mx-auto text-center">
+    <div class="flex items-center justify-center gap-4 mb-10">
+      <span class="w-10 h-px bg-line"></span>
+      <h3 class="text-2xl lg:text-3xl font-serif text-ink tracking-wide">Why Choose Webtixa Parfum?</h3>
+      <span class="w-10 h-px bg-line"></span>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+      <div class="bg-shell p-5 rounded-lg border border-line flex flex-col items-center text-center min-h-[150px] justify-center hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+        <svg class="w-7 h-7 text-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h5 class="text-[11px] font-semibold text-ink leading-snug">Long-Lasting</h5><p class="text-[10px] text-taupe mt-1">All-day freshness</p>
+      </div>
+      <div class="bg-shell p-5 rounded-lg border border-line flex flex-col items-center text-center min-h-[150px] justify-center hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+        <svg class="w-7 h-7 text-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <h5 class="text-[11px] font-semibold text-ink leading-snug">Ethically Sourced</h5><p class="text-[10px] text-taupe mt-1">Pure botanicals</p>
+      </div>
+      <div class="bg-shell p-5 rounded-lg border border-line flex flex-col items-center text-center min-h-[150px] justify-center hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+        <svg class="w-7 h-7 text-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/></svg>
+        <h5 class="text-[11px] font-semibold text-ink leading-snug">Gift-Ready</h5><p class="text-[10px] text-taupe mt-1">Elegantly boxed</p>
+      </div>
+      <div class="bg-shell p-5 rounded-lg border border-line flex flex-col items-center text-center min-h-[150px] justify-center hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+        <svg class="w-7 h-7 text-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h5 class="text-[11px] font-semibold text-ink leading-snug">Secure Checkout</h5><p class="text-[10px] text-taupe mt-1">100% protected</p>
+      </div>
+      <div class="bg-shell p-5 rounded-lg border border-line flex flex-col items-center text-center min-h-[150px] justify-center hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+        <svg class="w-7 h-7 text-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <h5 class="text-[11px] font-semibold text-ink leading-snug">Fast Delivery</h5><p class="text-[10px] text-taupe mt-1">Global express</p>
+      </div>
+      <div class="bg-shell p-5 rounded-lg border border-line flex flex-col items-center text-center min-h-[150px] justify-center hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+        <svg class="w-7 h-7 text-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <h5 class="text-[11px] font-semibold text-ink leading-snug">Dedicated Support</h5><p class="text-[10px] text-taupe mt-1">24/7 client care</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="w-full bg-cream py-16 px-6 border-b border-line">
+  <div class="max-w-6xl mx-auto">
+    <h3 class="text-3xl font-serif text-ink text-center mb-10 tracking-wide">Loved by Our Customers</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <figure class="bg-shell p-6 rounded-lg border border-line flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex text-gold mb-4 gap-0.5">★★★★★</div>
+          <blockquote class="text-[15px] text-ink/80 leading-relaxed">&ldquo;I love this scent so much, and it lasts all day. The floral base notes give me such a comforting feeling.&rdquo;</blockquote>
+        </div>
+        <figcaption class="flex items-center gap-3 mt-6 pt-4 border-t border-line">
+          <span class="w-10 h-10 rounded-full bg-gold/20 text-gold flex items-center justify-center text-xs font-semibold">IB</span>
+          <span class="text-[12px] font-medium text-ink">Isabella B.</span>
+        </figcaption>
+      </figure>
+      <figure class="bg-shell p-6 rounded-lg border border-line flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex text-gold mb-4 gap-0.5">★★★★★</div>
+          <blockquote class="text-[15px] text-ink/80 leading-relaxed">&ldquo;Beautiful packaging and an even more beautiful scent. Absolutely worth it — my new signature fragrance.&rdquo;</blockquote>
+        </div>
+        <figcaption class="flex items-center gap-3 mt-6 pt-4 border-t border-line">
+          <span class="w-10 h-10 rounded-full bg-gold/20 text-gold flex items-center justify-center text-xs font-semibold">DR</span>
+          <span class="text-[12px] font-medium text-ink">Daniel R.</span>
+        </figcaption>
+      </figure>
+      <figure class="bg-shell p-6 rounded-lg border border-line flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex text-gold mb-4 gap-0.5">★★★★★</div>
+          <blockquote class="text-[15px] text-ink/80 leading-relaxed">&ldquo;The discovery set helped me find my perfect match. I can&apos;t stop complimenting it — truly exceptional.&rdquo;</blockquote>
+        </div>
+        <figcaption class="flex items-center gap-3 mt-6 pt-4 border-t border-line">
+          <span class="w-10 h-10 rounded-full bg-gold/20 text-gold flex items-center justify-center text-xs font-semibold">SM</span>
+          <span class="text-[12px] font-medium text-ink">Sophia M.</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="flex justify-center items-center gap-1.5 mt-8">
+      <span class="w-2 h-2 rounded-full bg-ink"></span>
+      <span class="w-2 h-2 rounded-full bg-line"></span>
+      <span class="w-2 h-2 rounded-full bg-line"></span>
+    </div>
+  </div>
+</section>
+
+<section id="journal" class="w-full bg-cream py-14 px-6 border-b border-line">
+  <div class="max-w-7xl mx-auto space-y-10">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 border-b border-line pb-6">
+      <div class="space-y-1">
+        <span class="text-[10px] uppercase tracking-[0.25em] text-gold font-semibold">Stories &amp; Insights</span>
+        <h2 class="text-3xl md:text-4xl font-serif text-ink">The Journal</h2>
+      </div>
+      <a href="#" class="inline-flex items-center gap-1.5 text-xs font-medium text-ink hover:text-gold transition-colors group">
+        <span>View All Articles</span>
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <article class="group cursor-pointer space-y-4">
+        <div class="relative overflow-hidden rounded-lg bg-sand aspect-[16/10] ring-1 ring-line">
+          <img src="journal-flowers-jasmine.jpg" alt="Jasmine harvest" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="space-y-2">
+          <span class="text-[10px] text-taupe tracking-wider uppercase font-medium">May 12, 2026 &bull; Ingredients</span>
+          <h3 class="text-lg font-serif text-ink group-hover:text-gold transition-colors leading-snug">The Origin of Jasmine: From Harvest to Essence</h3>
+          <p class="text-xs text-ink/60 leading-relaxed">Discover how pure jasmine flowers are harvested at dawn to preserve their delicate, rare aromatic profile.</p>
+        </div>
+      </article>
+      <article class="group cursor-pointer space-y-4">
+        <div class="relative overflow-hidden rounded-lg bg-sand aspect-[16/10] ring-1 ring-line">
+          <img src="journal-signature-scent.jpg" alt="Finding a signature scent" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="space-y-2">
+          <span class="text-[10px] text-taupe tracking-wider uppercase font-medium">Apr 28, 2026 &bull; Guide</span>
+          <h3 class="text-lg font-serif text-ink group-hover:text-gold transition-colors leading-snug">How to Find Your Signature Scent</h3>
+          <p class="text-xs text-ink/60 leading-relaxed">A comprehensive guide on testing base notes and skin chemistry to find a fragrance that defines you.</p>
+        </div>
+      </article>
+      <article class="group cursor-pointer space-y-4">
+        <div class="relative overflow-hidden rounded-lg bg-sand aspect-[16/10] ring-1 ring-line">
+          <img src="journal-bottles.jpg" alt="Inside the atelier" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="space-y-2">
+          <span class="text-[10px] text-taupe tracking-wider uppercase font-medium">Mar 15, 2026 &bull; Craftsmanship</span>
+          <h3 class="text-lg font-serif text-ink group-hover:text-gold transition-colors leading-snug">Inside Our Botanical Atelier</h3>
+          <p class="text-xs text-ink/60 leading-relaxed">An exclusive look inside our distillation process and how we blend organic ingredients for longevity.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="w-full max-w-7xl mx-auto my-14 px-6">
+  <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-ink to-[#2e2a27] p-10 md:p-14 shadow-lg">
+    <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-gold/10"></div>
+    <div class="absolute -left-10 -bottom-20 w-56 h-56 rounded-full bg-gold/5"></div>
+    <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div class="space-y-2 text-center lg:text-left max-w-md">
+        <span class="text-[10px] uppercase tracking-[0.25em] text-gold font-semibold">Stay Inspired</span>
+        <h3 class="text-3xl md:text-4xl font-serif text-white leading-tight">Join the Webtixa Circle</h3>
+        <p class="text-sm text-white/60 leading-relaxed">Subscribe for exclusive launches, private scent stories, and 10% off your first order.</p>
+      </div>
+      <form id="userForm" class="relative w-full bg-white/10 sm:w-auto lg:w-auto flex flex-col   sm:flex-row items-stretch  max-w-md" onsubmit="event.preventDefault(); this.reset(); this.querySelector('button').textContent='Subscribed';">
+        <input  type="email" id="userEmail" placeholder="Enter your email address" required class="w-full sm:w-72 bg-white/10 border border-white/20 text-white placeholder-white/40 text-sm  px-4 py-3.5 rounded-sm focus:outline-none focus:border-gold transition-colors" />
+        <button  type="submit" id="userSubmit" class="px-7 py-3.5 bg-gold hover:bg-golddark text-white text-xs font-medium uppercase tracking-widest rounded-sm transition-colors shrink-0">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="w-full bg-sand text-ink pt-14 pb-8 px-6 border-t border-line">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-12 gap-8 pb-12 border-b border-line">
+      <div class="col-span-2 md:col-span-4 space-y-4">
+        <div class="leading-none">
+          <span class="text-2xl font-serif font-semibold text-ink tracking-wider block lowercase">webtixa</span>
+          <span class="text-[9px] uppercase tracking-[0.3em] text-taupe block mt-1">Parfum</span>
+        </div>
+        <p class="text-xs text-ink/60 leading-relaxed max-w-xs">A luxury fragrance experience crafted with rare ingredients and sustainable elegance.</p>
+        <div id="bottomCheckoutBar" class="flex items-center gap-3 pt-2">
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-ink hover:bg-ink hover:text-white transition-colors">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-ink hover:bg-ink hover:text-white transition-colors">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" aria-label="WhatsApp" class="w-9 h-9 rounded-full border border-line flex items-center justify-center text-ink hover:bg-ink hover:text-white transition-colors">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="md:col-span-2 space-y-3">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-ink">Shop</h4>
+        <ul class="space-y-2 text-xs text-ink/60">
+          <li><a href="#" class="hover:text-gold transition-colors">All Perfumes</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">Best Sellers</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">New Arrivals</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">Gift Sets</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2 space-y-3">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-ink">Collections</h4>
+        <ul class="space-y-2 text-xs text-ink/60">
+          <li><a href="#" class="hover:text-gold transition-colors">Floral Notes</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">Woody &amp; Amber</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">Citrus &amp; Fresh</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">Spicy Aromas</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2 space-y-3">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-ink">Support</h4>
+        <ul class="space-y-2 text-xs text-ink/60">
+          <li><a href="#" class="hover:text-gold transition-colors">Contact Us</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">Shipping &amp; Returns</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">FAQs</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">Track Your Order</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2 space-y-3">
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-ink">About</h4>
+        <ul class="space-y-2 text-xs text-ink/60">
+          <li><a href="#" class="hover:text-gold transition-colors">Our Story</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">Craftsmanship</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">Sustainability</a></li>
+          <li><a href="#" class="hover:text-gold transition-colors">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-taupe">
+      <p>&copy; 2026 Webtixa Parfum. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-ink transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-ink transition-colors">Terms of Service</a>
+        <a href="#" class="hover:text-ink transition-colors">Shipping &amp; Returns</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
