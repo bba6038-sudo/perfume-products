@@ -1,8 +1,7 @@
 const perfumeForm = document.getElementById('perfumeForm');
 const API_URL = 'https://6a9de8f32f89be7fb70d832c.mockapi.io/perfums';
 
-/**
- * دالة لعرض الإشعارات المنبثقة بدلاً من alert
+
  * @param {string} message - النص المراد عرضه
  * @param {boolean} isSuccess - تحديد ما إذا كانت العملية ناجحة أم فشلت
  */
@@ -12,19 +11,17 @@ function showToast(message, isSuccess = true) {
   const toastIcon = document.getElementById('toast-icon');
 
   if (toast && toastMsg) {
-    toastMsg.textContent = message;
-    
-    // تغيير الأيقونة واللون حسب نوع الإشعار
+    toastMsg.textContent = message; 
     if (toastIcon) {
       toastIcon.textContent = isSuccess ? '✓' : '✕';
       toastIcon.className = isSuccess ? 'text-emerald-600 text-lg font-bold' : 'text-red-500 text-lg font-bold';
     }
 
-    // إظهار الإشعار عبر إزالة وتعديل الكلاسات
+  
     toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
     toast.classList.add('opacity-100', 'translate-y-0');
 
-    // إخفاء الإشعار تلقائياً بعد 3 ثوانٍ
+   
     setTimeout(() => {
       toast.classList.remove('opacity-100', 'translate-y-0');
       toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
@@ -32,7 +29,7 @@ function showToast(message, isSuccess = true) {
   }
 }
 
-// الاستماع لحدث تقديم النموذج (Form Submit)
+
 perfumeForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -56,7 +53,7 @@ perfumeForm.addEventListener('submit', async (event) => {
         });
 
         if (response.ok) {
-            // إظهار الإشعار الناعم بدلاً من alert
+            
             showToast('تم إضافة العطر بنجاح إلى المتجر!', true);
             perfumeForm.reset();
         } else {
