@@ -272,10 +272,8 @@ function renderBottomCheckoutBar(phoneNumber = "9647783156631") {
         return total + (itemPrice * itemQty);
     }, 0);
 
-       // 1. أضيفي هذا السطر قبل السطر 276 مباشرة
 const isAr = document.documentElement.lang === 'ar';
 
-// 2. تعديل السطر 276
 let messageText = isAr ? "مرحباً، أود إكمال طلبي للمنتجات التالية:\n" : "Hello, I would like to complete my order for the following perfumes:\n";
 
 cart.forEach((item, index) => {
@@ -283,13 +281,11 @@ cart.forEach((item, index) => {
     messageText += `${index + 1}. `;
     messageText += `${item.name}*\n`;
     
-    // 3. تعديل السطرين 280 و 281 لاستخدام الكلمات حسب اللغة
     messageText +=  `${isAr ? 'الكمية' : 'Quantity'}: ${item.quantity}\n`;
     messageText +=    `${isAr ? 'السعر' : 'Price'}: $${itemTotal}\n\n`;
 });
 
-messageText += `${isAr ? 'المجموع الكلي' : 'Grand Total'}: ${grandTotal.toFixed(2)}`
-
+messageText += `${isAr ? 'المجموع الكلي' : 'Grand Total'}: ${grandTotal.toFixed(2)}`;
     const encodedMessage = encodeURIComponent(messageText);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
