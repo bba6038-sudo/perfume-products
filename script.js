@@ -415,7 +415,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
 let isArabic = false;
 
 window.googleTranslateElementInit = function () {
@@ -434,6 +433,8 @@ function hideGoogleElements() {
     }
 
     document.body.style.setProperty('top', '0px', 'important');
+    document.body.style.setProperty('margin-top', '0px', 'important');
+    document.documentElement.style.setProperty('top', '0px', 'important');
     document.body.style.setProperty('position', 'static', 'important');
 
     const skiptranslateElements = document.querySelectorAll('.skiptranslate, .goog-logo-link');
@@ -460,8 +461,7 @@ function toggleTranslation() {
 
         isArabic = !isArabic;
 
-        setTimeout(hideGoogleElements, 50);
-        setTimeout(hideGoogleElements, 300);
+        hideGoogleElements();
     } else {
         setTimeout(toggleTranslation, 100);
     }
@@ -477,4 +477,18 @@ document.addEventListener('DOMContentLoaded', () => {
     googleScript.type = 'text/javascript';
     googleScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     document.head.appendChild(googleScript);
+
+    
+    const bodyObserver = new MutationObserver(() => {
+        if (document.body.style.top !== '0px' || document.body.style.marginTop !== '0px') {
+            hideGoogleElements();
+        }
+    });
+
+     
+    bodyObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['style']
+    });
 });
+
