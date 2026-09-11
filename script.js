@@ -188,22 +188,7 @@ function handleAddToCart(product) {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-async function deleteProduct(productId) {
-    if (!confirm) return;
 
-    try {
-        const response = await fetch(`${API_URL}/${productId}`, {
-            method: 'DELETE',
-        });
-        if (response.ok) {
-            loadPerfumes();
-        } else {
-            console.error('Error deleting product:', response.statusText);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
 
 const showAddStatus = (message = 'Added to Cart') => {
     const toast = document.createElement('div');
